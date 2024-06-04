@@ -1,19 +1,18 @@
 package managers;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import infra.DAO;
 import model.Professor;
 
 public class ProfessorManager {
-	
-	List<Professor> professores;
+	DAO<Professor> dao;
 	
 	Scanner entrada = new Scanner(System.in);
 	
-	public ProfessorManager(List<Professor> professores) {
-		this.professores = professores;
+	public ProfessorManager() {
+		dao = new DAO<>(Professor.class);
 	}
 	
 	public void adicionarProfessor() {
@@ -32,44 +31,41 @@ public class ProfessorManager {
 		entrada.nextLine();
 		
 		Professor professor = new Professor(nome, idade, sexo, salario);
-		professores.add(professor);
+		dao.incluirTransacao(professor);
 		
 		System.out.println("\nProfessor adicionado com sucesso!\n");
 		System.out.println("ID do professor: " + professor.getId() + "\n");
 	}
 	
 	public void removerProfessor() {
+		List<Professor> professores = dao.obterTodos();
+		
 		if(professores.isEmpty()) {
 			System.out.println("Não há professores cadastrados!");
 		} else {
-			System.out.print("ID do Professor: ");
+			System.out.print("ID do professor: ");
 			String idProfessor = entrada.nextLine();
 			
-			Boolean removido = false;
+			Professor professor = dao.encontrar(idProfessor);
 			
-			for(Iterator<Professor> iterator = professores.iterator(); iterator.hasNext();) {
-				Professor professor = iterator.next();
-				
-				if(professor.getId().equals(idProfessor)) {
-					iterator.remove();
-					removido = true;
-					break;
-				}
-			}
-			if(removido) {
-				System.out.println("\nProfessor removido com sucesso!\n");
+			if(professor != null) {
+				dao.remover(professor);
+				System.out.println("Professor removido!");
 			} else {
-				System.out.println("\nProfessor não encontrado\n");
+				System.out.println("Professor não econtrado!");
 			}
 		}	
 	}
 	
 	public void listarProfessores() {
+		List<Professor> professores = dao.obterTodos();
+		
 		if(professores.isEmpty()) {
-			System.out.println("Não há professore cadastrados!");
+			System.out.println("Nenhum professor encontrado");
 		} else {
 			for(Professor professor: professores) {
-				professor.imprimePessoa();
+				System.out.println("Id: " + professor.getId()
+									+ ", Nome: " + professor.getNome());
 			}
 		}
 	}

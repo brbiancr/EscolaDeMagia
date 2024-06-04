@@ -1,33 +1,33 @@
 package managers;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import infra.DAO;
 import model.Aluno;
 import model.Disciplina;
 import model.Professor;
 
 public class DisciplinaManager {
-	List<Disciplina> disciplinas;
-	List<Professor> professores;
-	List<Aluno> alunos;
+	DAO<Disciplina> dao;
 	
 	Scanner entrada = new Scanner(System.in);
 	
-	public DisciplinaManager(List<Disciplina> disciplinas, List<Professor> professores, List<Aluno> alunos) {
-		this.disciplinas = disciplinas;
-		this.professores =professores;
-		this.alunos = alunos;
+	public DisciplinaManager() {
+		dao = new DAO<>(Disciplina.class);
 	}
 	
 	// Verifica se a lista de professores esta vazia
 	// Caso contrário adiciona a disciplina a lista de disciplinas existentes
 	public void adicionarDisciplina() {
+		DAO<Professor> daoP = new DAO<>(Professor.class);
+		
+		List<Professor> professores = daoP.obterTodos();
+		
 		if(professores.isEmpty()) {
 			System.out.println("Não há professores para ministrar a disciplina!");
 		} else {
-			System.out.print("Nome: ");
+			System.out.print("Nome da disciplina: ");
 			String nome = entrada.nextLine();
 			
 			System.out.print("Professor responsavel\n");
@@ -43,48 +43,45 @@ public class DisciplinaManager {
 			entrada.nextLine();
 			
 			Disciplina disciplina = new Disciplina(nome, professores.get(opcao), cargaHoraria);
-			disciplinas.add(disciplina);
+			dao.incluirTransacao(disciplina);
 			
 			System.out.println("\nDisciplina criada com sucesso!\n");
-			System.out.println("Código da disciplina" + disciplina.getCodigo() + "\n");
+			System.out.println("Código da disciplina: " + disciplina.getCodigo() + "\n");
 		}
 		
 	}
 	
 	// Remove a disciplina da lista de disciplinas a partir do codigo disciplina
 	public void removerDisciplina() {
+		List<Disciplina> disciplinas = dao.obterTodos();
+		
 		if(disciplinas.isEmpty()) {
-			System.out.println("Não há disciplinas cadastrados!");
+			System.out.println("Não há disciplinas cadastradas!");
 		} else {
-			System.out.print("Codigo da Disciplina: ");
+			System.out.print("Código da disciplina: ");
 			String codigo = entrada.nextLine();
 			
-			Boolean removido = false;
+			Disciplina disciplina = dao.encontrar(codigo);
 			
-			for(Iterator<Disciplina> iterator = disciplinas.iterator(); iterator.hasNext();) {
-				Disciplina disciplina = iterator.next();
-				
-				if(disciplina.getCodigo().equals(codigo)) {
-					iterator.remove();
-					removido = true;
-					break;
-				}
-			}
-			if(removido) {
-				System.out.println("\nDisciplina removida com sucesso!\n");
+			if(disciplina != null) {
+				dao.remover(disciplina);
+				System.out.println("Disciplina removida!");
 			} else {
-				System.out.println("\nDisciplina não encontrado\n");
+				System.out.println("Disciplina não econtrada!");
 			}
-		}	
+		}		
 	}
 	
 	// Lista todas as disciplinas cadastradas
 	public void listarDisciplinas() {
+		List<Disciplina> disciplinas = dao.obterTodos();
+		
 		if(disciplinas.isEmpty()) {
-			System.out.println("Não há disciplinas cadastradas!");
+			System.out.println("Nenhuma disciplina encontrada! ");
 		} else {
 			for(Disciplina disciplina: disciplinas) {
-				disciplina.imprimeDisciplina();
+				System.out.println("Codigo: " + disciplina.getCodigo()
+									+ ", Nome: " + disciplina.getNome());
 			}
 		}
 	}
@@ -93,10 +90,11 @@ public class DisciplinaManager {
 	// Caso não existam alunos cadastrados e nem disciplinas cadastradas, volta-se para o menu das disciplinas
 	
 	public void gerenciarDisciplina() {
+		List<Disciplina> disciplinas = dao.obterTodos();
+		
 		if(disciplinas.isEmpty()) {
 			System.out.println("Não há disciplinas cadastradas! ");
 		} else {
-			
 			System.out.println("\n- Selecione a disciplina -");
 			for(int i = 0; i < disciplinas.size(); i++) {
 				System.out.println("- " + i + " - " + disciplinas.get(i).getNome());
@@ -110,28 +108,28 @@ public class DisciplinaManager {
 	
 	// Matricula o aluno atravez do numero de matricula em uma disciplina já existente
 	public void matricularAluno(Disciplina disciplina) {
+		DAO<Aluno> daoA = new DAO<>(Aluno.class);
+		
+		List<Aluno> alunos = daoA.obterTodos();
+		
 		if(alunos.isEmpty()) {		
 			System.out.println("Não há alunos cadastrados!");
 		} else{		
 			System.out.print("- Numero de matricula: ");
 			String matricula = entrada.nextLine();
 			
-			Boolean matriculado = false;
+			Aluno aluno = daoA.encontrar(matricula);
 			
-			for(Aluno aluno: alunos) {
-				if(aluno.getId().equals(matricula)) {
-					
-					disciplina.getAlunosMatriculados().add(aluno);
-					aluno.getDisciplinasMatriculadas().add(disciplina);
-					
-					matriculado = true;
-				}
-			}
-			
-			if(matriculado) {
-				System.out.println("Aluno matriculado com sucesso!");
-			} else {
-				System.out.println("Matricula não encontrada! ");
+			if(aluno == null) {
+				System.out.println("Aluno nao encontrado!");
+			} else {			
+				disciplina.getAlunosMatriculados().add(aluno);
+				aluno.getDisciplinasMatriculadas().add(disciplina);
+				
+				dao.atualizar(disciplina);
+				daoA.atualizar(aluno);
+				
+				System.out.println(aluno.getId() + " matriculado com sucesso!");
 			}
 		}
 	}
@@ -154,14 +152,22 @@ public class DisciplinaManager {
 	public void trocarProfessorResponsavel(Disciplina disciplina) {
 		System.out.println("- Selecione o novo professor -");
 		
-		for(int i = 0; i < professores.size(); i++) {
-			System.out.println("- " + i + " - " + professores.get(i).getNome() + "\n" + professores.get(i).getId());
+		DAO<Professor> daoP = new DAO<>(Professor.class);
+		
+		List<Professor> professores = daoP.obterTodos();
+		
+		int i = 0;
+		for(Professor professor: professores) {
+			System.out.println(i + ": " + professor.getId() + " - " + professor.getNome());
+			i++;
 		}
 		
 		int opcao = entrada.nextInt();
 		entrada.nextLine();
 		
 		disciplina.setProfessorResponsavel(professores.get(opcao));
+		
+		dao.atualizar(disciplina);
 		
 		System.out.println("Troca realizada com sucesso! ");
 	}

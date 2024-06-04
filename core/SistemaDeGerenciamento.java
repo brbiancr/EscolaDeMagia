@@ -1,7 +1,5 @@
- package core;
+package core;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import managers.AdministradorManager;
@@ -9,9 +7,6 @@ import managers.AlunoManager;
 import managers.DisciplinaManager;
 import managers.MenuManager;
 import managers.ProfessorManager;
-import model.Aluno;
-import model.Disciplina;
-import model.Professor;
 
 public class SistemaDeGerenciamento {
 	
@@ -19,24 +14,16 @@ public class SistemaDeGerenciamento {
 	
 	private static SistemaDeGerenciamento sistema = new SistemaDeGerenciamento(); 
 	
-	private List<Aluno> alunos;
-	private List<Professor> professores;
-	private List<Disciplina> disciplinas;
-	
 	private AlunoManager areaDoAluno;
 	private ProfessorManager areaDoProfessor;
 	private AdministradorManager areaDoAdministrador;
 	private DisciplinaManager areaDaDisciplina;
 	
 	public SistemaDeGerenciamento() {
-		this.alunos = new ArrayList<Aluno>();
-		this.professores = new ArrayList<Professor>();
-		this.disciplinas = new ArrayList<Disciplina>();
-		
-		this.areaDoAluno = new AlunoManager(alunos);
-		this.areaDoProfessor = new ProfessorManager(professores);
+		this.areaDoAluno = new AlunoManager();
+		this.areaDoProfessor = new ProfessorManager();
 		this.areaDoAdministrador = new AdministradorManager();
-		this.areaDaDisciplina = new DisciplinaManager(disciplinas, professores, alunos);
+		this.areaDaDisciplina = new DisciplinaManager();
 	}
 	
 	public static void main(String[] args) {

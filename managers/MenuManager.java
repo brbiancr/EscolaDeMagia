@@ -43,7 +43,7 @@ public class MenuManager {
 	public static void exibirMenuPrincipal() {
 		System.out.println("\n- - - Menu Principal - - - ");
 		System.out.println("1 - Aluno Manager");
-		System.out.println("2 - Professos Manager");
+		System.out.println("2 - Professor Manager");
 		System.out.println("3 - Administrador Manager");
 		System.out.println("4 - Disciplina Manager");
 		System.out.println("5 - Exit");

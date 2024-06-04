@@ -51,11 +51,17 @@ public class DAO<E> {
 	
 	public DAO<E> remover(E entidade){
 		em.getTransaction().begin();
-		em.remove(entidade); // Remove do banco, mas sera que remove da lista? Acho que não
+		em.remove(entidade);
 		em.getTransaction().commit();
 		return this;
 	}
 	
+	public DAO<E> atualizar(E entidade){
+		em.getTransaction().begin();
+		em.merge(entidade);
+		em.getTransaction().commit();
+		return this;
+	}
 	public E encontrar(String id){
 		return em.find(classe, id);		
 	}
