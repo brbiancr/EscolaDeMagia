@@ -15,24 +15,12 @@ public class ProfessorManager {
 		dao = new DAO<>(Professor.class);
 	}
 	
-	public void adicionarProfessor() {
-		System.out.print("Nome: ");
-		String nome = entrada.nextLine();
-		
-		System.out.print("Faixa Etaria: ");
-		String faixaEtaria = entrada.nextLine();
-		
-		System.out.print("Sexo: ");
-		String sexo = entrada.nextLine();
-		
-		System.out.print("Salario: ");
-		Double salario = entrada.nextDouble();
-		entrada.nextLine();
+	public void adicionarProfessor(String nome, String faixaEtaria, String sexo, double salario) {
 		
 		Professor professor = new Professor(nome, faixaEtaria, sexo, salario);
-		dao.incluirTransacao(professor);
 		
-		System.out.println("\nProfessor adicionado com sucesso!\n");
+		dao.incluirTransacao(professor);
+
 		System.out.println("ID do professor: " + professor.getId() + "\n");
 	}
 	
@@ -69,31 +57,4 @@ public class ProfessorManager {
 		}
 	}
 	
-	public void menuProfessor() {
-		
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuProfessor();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {
-				case 1: adicionarProfessor();
-						break;
-				
-				case 2: removerProfessor();
-						break;
-						
-				case 3: listarProfessores();
-						break;
-						
-				case 4: sair = true;
-						break;
-						
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
-		}
-	}
 }

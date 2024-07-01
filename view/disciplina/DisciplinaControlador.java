@@ -3,6 +3,7 @@ package view.disciplina;
 import java.io.IOException;
 import java.net.URL;
 
+import infra.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import managers.DisciplinaManager;
+import model.Professor;
 import view.FXMLControlador;
 
 
@@ -28,6 +31,10 @@ public class DisciplinaControlador {
 	
 	@FXML
 	private TextField campoCodigo;
+	
+	private DisciplinaManager disciplinaManager = new DisciplinaManager();
+	
+	private DAO<Professor> dao = new DAO<>(Professor.class);
 	
 	
 	
@@ -81,10 +88,18 @@ public class DisciplinaControlador {
 	
 	@FXML
 	public void salvarAdicionarDisciplina(ActionEvent event) throws IOException {
-		System.out.println("Nome: " + campoNomeDisciplina.getText());
-		System.out.println("Professor Responsavel: " + campoProfessorResponsavel.getValue());
-		System.out.println("Carga Horaria: " + campoCargaHoraria.getText());
+		
+		String nome = campoNomeDisciplina.getText();
+		Professor professorResponsavel = dao.encontrar(campoProfessorResponsavel.getValue());
+		double cargaHoraria =  Double.parseDouble(campoCargaHoraria.getText());
+		
+		
+		System.out.println("Nome: " + nome);
+		System.out.println("Professor Responsavel: " + professorResponsavel);
+		System.out.println("Carga Horaria: " + cargaHoraria);
 		System.out.println("Disciplina adicionada!");
+		
+		disciplinaManager.adicionarDisciplina(nome, professorResponsavel, cargaHoraria);
 		
 		//TODO Adicionar pop-up Disciplina adicionada!
 		

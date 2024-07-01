@@ -12,6 +12,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import managers.ProfessorManager;
 import view.FXMLControlador;
 
 public class ProfessorControlador {
@@ -20,7 +21,7 @@ public class ProfessorControlador {
 	private TextField campoNome;
 	
 	@FXML
-	private TextField campoIdade;
+	private ChoiceBox<String> campoFaixaEtaria;
 	
 	@FXML
 	private ChoiceBox<String> campoSexo;
@@ -29,6 +30,8 @@ public class ProfessorControlador {
 	private TextField campoSalario;
 	
 	@FXML TextField campoID;
+	
+	private ProfessorManager professorManager = new ProfessorManager();
 	
 	public void adicionarProfessor(ActionEvent event) throws IOException {
 		String arquivoCSS = getClass().getResource("/view/professor/adicionarProfessor.css").toExternalForm();
@@ -77,12 +80,19 @@ public class ProfessorControlador {
 	
 	@FXML
 	public void salvarAdicionarProfessor(ActionEvent event) throws IOException {
-		System.out.println("Nome: " + campoNome.getText());
-		System.out.println("Idade: " + campoIdade.getText());
-		System.out.println("Sexo: " + campoSexo.getValue());
-		System.out.println("Salario: " + campoSalario.getText());
+		
+		String nome = campoNome.getText();
+		String faixaEtaria = campoFaixaEtaria.getValue();
+		String sexo = campoSexo.getValue();
+		double salario = Double.parseDouble(campoSalario.getText());
+		
+		System.out.println("Nome: " + nome);
+		System.out.println("Idade: " + faixaEtaria);
+		System.out.println("Sexo: " + sexo);
+		System.out.println("Salario: " + salario);
 		System.out.println("Professor adicionado!");
 		
+		professorManager.adicionarProfessor(nome, faixaEtaria, sexo, salario);
 		//TODO Adicionar pop-up Aluno adicionado!
 		
 		voltarProfessor(event);

@@ -19,35 +19,13 @@ public class DisciplinaManager {
 	
 	// Verifica se a lista de professores esta vazia
 	// Caso contrário adiciona a disciplina a lista de disciplinas existentes
-	public void adicionarDisciplina() {
-		DAO<Professor> daoP = new DAO<>(Professor.class);
+	public void adicionarDisciplina(String nome, Professor professorResponsavel, double cargaHoraria) {
+			
+		Disciplina disciplina = new Disciplina(nome, professorResponsavel, cargaHoraria);
 		
-		List<Professor> professores = daoP.obterTodos();
-		
-		if(professores.isEmpty()) {
-			System.out.println("Não há professores para ministrar a disciplina!");
-		} else {
-			System.out.print("Nome da disciplina: ");
-			String nome = entrada.nextLine();
+		dao.incluirTransacao(disciplina);
 			
-			System.out.print("Professor responsavel\n");
-			for(int i = 0; i < professores.size(); i++) {
-				System.out.println("- - " + i  + " - -");
-				professores.get(i).imprimePessoa();
-			}
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			System.out.print("Carga Horária: ");
-			Double cargaHoraria = entrada.nextDouble();
-			entrada.nextLine();
-			
-			Disciplina disciplina = new Disciplina(nome, professores.get(opcao), cargaHoraria);
-			dao.incluirTransacao(disciplina);
-			
-			System.out.println("\nDisciplina criada com sucesso!\n");
-			System.out.println("Código da disciplina: " + disciplina.getCodigo() + "\n");
-		}
+		System.out.println("Código da disciplina: " + disciplina.getCodigo() + "\n");
 		
 	}
 	
@@ -99,10 +77,7 @@ public class DisciplinaManager {
 			for(int i = 0; i < disciplinas.size(); i++) {
 				System.out.println("- " + i + " - " + disciplinas.get(i).getNome());
 			}
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			menuGerenciarDisciplina(disciplinas.get(opcao));
+
 		}		
 	}
 	
@@ -170,69 +145,5 @@ public class DisciplinaManager {
 		dao.atualizar(disciplina);
 		
 		System.out.println("Troca realizada com sucesso! ");
-	}
-	
-	public void menuGerenciarDisciplina(Disciplina disciplina) {
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuGerenciarDisciplina();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {
-				case 1: matricularAluno(disciplina);
-						break;
-				
-				case 2: desmatricularAluno(disciplina);
-						break;
-						
-				case 3: trocarProfessorResponsavel(disciplina);
-						break;
-						
-				case 4: disciplina.imprimeAlunosMatriculados();;
-						break;
-						
-				case 5: disciplina.imprimeDisciplina();
-						break;
-				
-				case 6: sair = true;
-						break;
-				
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
-		}
-	}
-	
-	public void menuDisciplina() {
-		
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuDisciplina();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {
-				case 1: adicionarDisciplina();
-						break;
-				
-				case 2: removerDisciplina();
-						break;
-						
-				case 3: listarDisciplinas();
-						break;
-						
-				case 4: gerenciarDisciplina();
-						break;
-						
-				case 5: sair = true;
-						break;
-						
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
-		}
 	}
 }

@@ -84,19 +84,4 @@ public class AlunoManager {
 			System.out.println("Aluno desmatriculado com sucesso! ");
 		}
 	}
-	
-	public void gerenciarAluno() {
-		List<Aluno> alunos = dao.obterTodos();
-		
-		if(alunos.isEmpty()) {
-			System.out.println("Não há alunos cadastrados! ");
-		} else {
-			
-			System.out.println("\n- Selecione o aluno -");
-			for(int i = 0; i < alunos.size(); i++) {
-				System.out.println("- " + i + " - " + alunos.get(i).getNome() + " - Matricula: " + alunos.get(i).getId());
-			}
-
-		}
-	}
 }
