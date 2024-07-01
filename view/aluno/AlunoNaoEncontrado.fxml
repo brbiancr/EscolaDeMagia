@@ -7,21 +7,21 @@
 <?import java.lang.*?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="view.administrador.AdministradorControlador"
-	styleClass="administradorNaoEncontrado" hgap="15" vgap="15">
+	fx:controller="view.aluno.AlunoControlador"
+	styleClass="alunoNaoEncontrado" hgap="15" vgap="15">
 	
 	<padding>
 		<Insets left="40" right="40" top="40"/>
 	</padding>
 	
 	<columnConstraints>
-		<ColumnConstraints minWidth="30" prefWidth="30" hgrow="ALWAYS" halignment="left"/>	
-		<ColumnConstraints minWidth="90" halignment="left"/>
-		<ColumnConstraints minWidth="90" halignment="left"/>
+		<ColumnConstraints minWidth="80" prefWidth="80" halignment="left"/>	
+		<ColumnConstraints minWidth="80" hgrow="ALWAYS" halignment="left"/>
+		<ColumnConstraints minWidth="80" halignment="right"/>
 	</columnConstraints>
 	
-	<Label text="Remover Administrador"
-		styleClass="administradorNaoEncontrado-titulo"
+	<Label text="Remover Aluno"
+		styleClass="alunoNaoEncontrado-titulo"
 		GridPane.columnIndex="0" GridPane.rowIndex="0"
 		GridPane.columnSpan="3"
 		GridPane.halignment="CENTER">
@@ -31,29 +31,29 @@
 		</GridPane.margin>
 	</Label>
 	
-	<Label text="ID"
-		styleClass="administradorNaoEncontrado-label"
+	<Label text="Matricula"
+		styleClass="alunoNaoEncontrado-label"
 		GridPane.columnIndex="0" GridPane.rowIndex="1"
 		GridPane.halignment="LEFT"></Label>
 	
-	<TextField fx:id="campoId"
-		styleClass="administradorNaoEncontrado-textField"
+	<TextField fx:id="campoMatricula"
+		styleClass="alunoNaoEncontrado-textField"
 		GridPane.columnIndex="1" GridPane.rowIndex="1"
 		GridPane.halignment="LEFT"></TextField>
 	
 	<Button text="Buscar"
 		GridPane.columnIndex="2" GridPane.rowIndex="1"
 		GridPane.halignment="RIGHT"
-		styleClass="administradorNaoEncontrado-botao-buscar"
-		onAction="#buscarAdministrador">
+		styleClass="alunoNaoEncontrado-botao-buscar"
+		onAction="#buscarAluno">
 			
 		<GridPane.margin>
 			<Insets top="10" bottom="10"/>
 		</GridPane.margin>
 	</Button>
 	
-	<Label text="ADMINSTRADOR NÃO ENCONTRADO"
-		styleClass="administradorNaoEncontrado-label-alerta"
+	<Label text="ALUNO NÃO ENCONTRADO"
+		styleClass="alunoNaoEncontrado-label-alerta"
 		GridPane.columnIndex="0" GridPane.rowIndex="2"
 		GridPane.columnSpan="3"
 		GridPane.halignment="CENTER"></Label>
@@ -62,8 +62,8 @@
 		GridPane.columnIndex="0" GridPane.rowIndex="4"
 		GridPane.columnSpan="3"
 		GridPane.halignment="CENTER"
-		styleClass="administradorNaoEncontrado-botao"
-		onAction="#voltarAdministrador">
+		styleClass="alunoNaoEncontrado-botao"
+		onAction="#voltarAluno">
 			
 		<GridPane.margin>
 			<Insets top="10" bottom="10"/>

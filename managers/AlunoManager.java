@@ -29,24 +29,20 @@ public class AlunoManager {
 		System.out.println("Matricula do aluno: " + aluno.getId() + "\n");
 	}
 	
-	public void removerAluno() {
-		List<Aluno> alunos = dao.obterTodos();
+	public void removerAluno(String matriculaAluno) {
+		Aluno aluno = buscarAluno(matriculaAluno);
 		
-		if(alunos.isEmpty()) {
-			System.out.println("Não há alunos matriculados!");
+		if(aluno == null) {
+			System.out.println("Aluno não encontrado");
 		} else {
-			System.out.print("Matricula do aluno: ");
-			String matricula = entrada.nextLine();
-			
-			Aluno aluno = dao.encontrar(matricula);
-			
-			if(aluno != null) {
-				dao.remover(aluno);
-				System.out.println("Aluno removido!");
-			} else {
-				System.out.println("Aluno não econtrado!");
-			}
-		}	
+			dao.remover(aluno);
+		}
+	}
+	
+	public Aluno buscarAluno(String matriculaAluno) {
+		Aluno aluno = dao.encontrar(matriculaAluno);
+		
+		return aluno;
 	}
 	
 	public void listarAlunos() {

@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import managers.AlunoManager;
+import model.Administrador;
+import model.Aluno;
 import view.FXMLControlador;
 
 public class AlunoControlador {
@@ -59,7 +61,7 @@ public class AlunoControlador {
 		removerAluno.getStylesheets().add(arquivoCSS);
 		
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setTitle("Escola de Magia - Adicionar Aluno");
+		stage.setTitle("Escola de Magia - Remover Aluno");
 	    stage.setScene(removerAluno);
 	    stage.show();
 
@@ -125,13 +127,28 @@ public class AlunoControlador {
 	}
 	
 	public void buscarAluno(ActionEvent event) throws IOException {
-		Boolean encontrouAluno = true;
+		Aluno aluno = alunoManager.buscarAluno(campoMatricula.getText());
 		
-		if(encontrouAluno) {
-			alunoEncontrado(event);
+		if(aluno == null) {
+			alunoNaoEncontrado(event);
 		} else {
-			System.out.println("Mostrar aluno não encontrado");
+	       	alunoEncontrado(event);
 		}
+	}
+	
+	public void alunoNaoEncontrado(ActionEvent event) throws IOException {		
+		String arquivoCSS = getClass().getResource("/view/aluno/alunoNaoEncontrado.css").toExternalForm();
+		URL arquivoFXML = getClass().getResource("/view/aluno/alunoNaoEncontrado.fxml");
+		
+		GridPane raiz = FXMLLoader.load(arquivoFXML);
+		
+		Scene alunoNaoEncontrado = new Scene(raiz, 350, 400);
+		alunoNaoEncontrado.getStylesheets().add(arquivoCSS);
+		
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setTitle("Escola de Magia - Remover Aluno");
+	    stage.setScene(alunoNaoEncontrado);
+	    stage.show();
 	}
 	
 	public void alunoEncontrado(ActionEvent event) throws IOException {		
