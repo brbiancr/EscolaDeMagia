@@ -20,27 +20,12 @@ public class AlunoManager {
 		this.reinos = new ArrayList<String>(List.of("Andros", "Solaria", "Calisto", "Dolana", "Domino", "Linphea", "Melodia", "Terra", "Zenith"));
 	}
 	
-	public void adicionarAluno() {
-		System.out.print("Nome: ");
-		String nome = entrada.nextLine();
+	public void adicionarAluno(String nome, String faixaEtaria, String sexo, String reino) {
 		
-		System.out.print("Faixa Etaria: ");
-		String faixaEtaria = entrada.nextLine();
+		Aluno aluno = new Aluno(nome, faixaEtaria, sexo, reino);
 		
-		System.out.print("Sexo: ");
-		String sexo = entrada.nextLine();
-		
-		System.out.println("Selecionar reino: ");
-		for(String reino: reinos) {
-			System.out.println(reinos.indexOf(reino) + "- " + reino );
-		}
-		int opcao = entrada.nextInt();
-		entrada.nextLine();
-		
-		Aluno aluno = new Aluno(nome, faixaEtaria, sexo, reinos.get(opcao));
 		dao.incluirTransacao(aluno);
-		
-		System.out.println("\nAluno adicionado com sucesso!\n");
+
 		System.out.println("Matricula do aluno: " + aluno.getId() + "\n");
 	}
 	
@@ -115,68 +100,7 @@ public class AlunoManager {
 			for(int i = 0; i < alunos.size(); i++) {
 				System.out.println("- " + i + " - " + alunos.get(i).getNome() + " - Matricula: " + alunos.get(i).getId());
 			}
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			menuGerenciarAluno(alunos.get(opcao));
-		}
-	}
-	
-	public void menuGerenciarAluno(Aluno aluno) {
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuGerenciarAluno();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {
-				case 1: listarDisciplinasMatriculadas(aluno);
-						break;
-				
-				case 2: desmatricularDisciplina(aluno);
-						break;
-						
-				case 3: aluno.imprimePessoa();
-						break;
-						
-				case 4: sair = true;
-						break;
-				
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
-		}
-	}
-	
-	public void menuAluno() {
-		
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuAluno();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {
-				case 1: adicionarAluno();
-						break;
-				
-				case 2: removerAluno();
-						break;
-						
-				case 3: listarAlunos();
-						break;
-						
-				case 4: gerenciarAluno();
-						break;
-						
-				case 5: sair = true;
-						break;
-						
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
+
 		}
 	}
 }

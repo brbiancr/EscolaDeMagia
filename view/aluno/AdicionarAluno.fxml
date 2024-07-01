@@ -42,9 +42,20 @@
 		styleClass="adicionarAluno-label"
 		GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
 		
-	<TextField fx:id="campoIdade"
-		styleClass="adicionarAluno-textField"
-		GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
+	<ChoiceBox fx:id="campoFaixaEtaria" 
+		styleClass="adicionarAluno-choiceBox"
+		GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="18-25" />
+                    <String fx:value="26-30" />
+                    <String fx:value="31-40" />
+                    <String fx:value="40-50" />
+                    <String fx:value="50-60" />
+                    <String fx:value="60-65" />
+                </FXCollections>
+            </items>
+    </ChoiceBox>
 	
 	<Label text="Sexo"
 		styleClass="adicionarAluno-label"

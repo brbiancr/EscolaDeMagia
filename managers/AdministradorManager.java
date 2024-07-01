@@ -54,26 +54,4 @@ public class AdministradorManager {
 			}
 		}
 	}
-	
-	public void menuAdministrador() {
-		
-		boolean sair = false;
-		
-		while(!sair) {
-			MenuManager.exibirMenuAdministrador();
-			
-			int opcao = entrada.nextInt();
-			entrada.nextLine();
-			
-			switch(opcao) {				
-				case 3: listarAdministradores();
-						break;
-						
-				case 4: sair = true;
-						break;
-						
-				default: System.out.println("Opção invalida, digite uma opção valida!");
-			}
-		}
-	}
 }

@@ -12,6 +12,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import managers.AlunoManager;
 import view.FXMLControlador;
 
 public class AlunoControlador {
@@ -20,7 +21,7 @@ public class AlunoControlador {
 	private TextField campoNome;
 	
 	@FXML
-	private TextField campoIdade;
+	private ChoiceBox<String> campoFaixaEtaria;
 	
 	@FXML
 	private ChoiceBox<String> campoSexo;
@@ -30,6 +31,8 @@ public class AlunoControlador {
 	
 	@FXML
 	private TextField campoMatricula;
+	
+	private AlunoManager alunoManager = new AlunoManager();
 	
 	public void adicionarAluno(ActionEvent event) throws IOException {
 		String arquivoCSS = getClass().getResource("/view/aluno/adicionarAluno.css").toExternalForm();
@@ -104,12 +107,18 @@ public class AlunoControlador {
 	
 	@FXML
 	public void salvarAdicionarAluno(ActionEvent event) throws IOException {
-		System.out.println("Nome: " + campoNome.getText());
-		System.out.println("Idade: " + campoIdade.getText());
-		System.out.println("Sexo: " + campoSexo.getValue());
-		System.out.println("Reino: " + campoReino.getValue());
-		System.out.println("Aluno adicionado!");
+		String nome = campoNome.getText();
+		String faixaEtaria = campoFaixaEtaria.getValue();
+		String sexo = campoSexo.getValue();
+		String reino = campoReino.getValue();
 		
+		System.out.println("Nome: " + nome);
+		System.out.println("Faixa etaria: " + faixaEtaria);
+		System.out.println("Sexo: " + sexo);
+		System.out.println("Reino: " + reino);
+		
+		alunoManager.adicionarAluno(nome, faixaEtaria, sexo, reino);
+
 		//TODO Adicionar pop-up Aluno adicionado!
 		
 		voltarAluno(event);
