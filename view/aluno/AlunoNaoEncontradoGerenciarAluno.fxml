@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.aluno.AlunoControlador"
+	styleClass="alunoNaoEncontradoGerenciarAluno" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="80" prefWidth="80" halignment="left"/>	
+		<ColumnConstraints minWidth="80" hgrow="ALWAYS" halignment="left"/>
+		<ColumnConstraints minWidth="80" halignment="right"/>
+	</columnConstraints>
+	
+	<Label text="Gerenciar Aluno"
+		styleClass="alunoNaoEncontradoGerenciarAluno-titulo"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+	
+	<Label text="Matricula"
+		styleClass="alunoNaoEncontradoGerenciarAluno-label"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"
+		GridPane.halignment="LEFT"></Label>
+	
+	<TextField fx:id="campoMatricula"
+		styleClass="alunoNaoEncontradoGerenciarAluno-textField"
+		GridPane.columnIndex="1" GridPane.rowIndex="1"
+		GridPane.halignment="LEFT"></TextField>
+	
+	<Button text="Buscar"
+		GridPane.columnIndex="2" GridPane.rowIndex="1"
+		GridPane.halignment="RIGHT"
+		styleClass="alunoNaoEncontradoGerenciarAluno-botao-buscar"
+		onAction="#buscarAlunoGerenciarAluno">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+	
+	<Label text="ALUNO NÃO ENCONTRADO"
+		styleClass="alunoNaoEncontradoGerenciarAluno-label-alerta"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER"></Label>
+		
+	<Button text="Voltar"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER"
+		styleClass="alunoNaoEncontradoGerenciarAluno-botao"
+		onAction="#voltarAluno">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+	
+</GridPane>
+
