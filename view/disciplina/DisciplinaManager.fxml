@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.disciplina.DisciplinaControlador"
+	styleClass="disciplinaManager" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="200" hgrow="ALWAYS"/>	
+	</columnConstraints>
+	
+	<Label text="Disciplina Manager"
+		styleClass="disciplinaManager-titulo"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.halignment="CENTER">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+	
+	<Button text="Adicionar Disciplina"
+		styleClass="disciplinaManager-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"
+		GridPane.halignment="CENTER"
+		onAction="#adicionarDisciplina"></Button>
+	
+	<Button text="Remover Disciplina"
+		styleClass="disciplinaManager-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"
+		GridPane.halignment="CENTER"
+		onAction="#removerDisciplina"></Button>
+	
+	<Button text="Lista de Disciplinas"
+		styleClass="disciplinaManager-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="3"
+		GridPane.halignment="CENTER"
+		onAction="#listaDeDisciplinas"></Button>
+		
+	<Button text="Gerenciar Disciplina"
+		styleClass="disciplinaManager-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.halignment="CENTER"
+		onAction="#gerenciarDisciplina"></Button>
+	
+	<Button text="Menu Principal"
+		styleClass="disciplinaManager-botao-menuPrincipal"
+		GridPane.columnIndex="0" GridPane.rowIndex="5"
+		GridPane.halignment="CENTER"
+		onAction="#menuPrincipal">
+		
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+</GridPane>
+

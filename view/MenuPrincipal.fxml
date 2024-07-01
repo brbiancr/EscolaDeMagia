@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.FXMLControlador"
+	styleClass="menuPrincipal" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="200" hgrow="ALWAYS"/>	
+	</columnConstraints>
+	
+	<Label text="Menu Principal"
+		styleClass="menuPrincipal-titulo"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.halignment="CENTER">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+	
+	<Button text="Administrador Manager"
+		styleClass="menuPrincipal-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"
+		GridPane.halignment="CENTER"
+		onAction="#administradorManager"></Button>
+	
+	<Button text="Aluno Manager"
+		styleClass="menuPrincipal-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"
+		GridPane.halignment="CENTER"
+		onAction="#alunoManager"></Button>
+	
+	<Button text="Disciplina Manager"
+		styleClass="menuPrincipal-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="3"
+		GridPane.halignment="CENTER"
+		onAction="#disciplinaManager"></Button>
+	
+	<Button text="Professor Manager"
+		styleClass="menuPrincipal-botao"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.halignment="CENTER"
+		onAction="#professorManager"></Button>
+	
+	<Button fx:id="sair"
+		text="Sair"
+		styleClass="menuPrincipal-botao-sair"
+		GridPane.columnIndex="0" GridPane.rowIndex="5"
+		GridPane.halignment="CENTER"
+		onAction="#sair">
+		
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+</GridPane>
+

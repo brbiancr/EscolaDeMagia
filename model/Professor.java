@@ -23,8 +23,8 @@ public class Professor extends Pessoa{
 		super();
 	}
 	
-	public Professor(String nome, int idade, String sexo, Double salario) {
-		super(GerarIDs.gerarIdProfessor(), nome, idade, sexo);
+	public Professor(String nome, String faixaEtaria, String sexo, Double salario) {
+		super(GerarIDs.gerarIdProfessor(), nome, faixaEtaria, sexo);
 		this.salario = salario;
 		disciplinas = new ArrayList<Disciplina>();
 	}

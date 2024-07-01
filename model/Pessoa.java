@@ -14,7 +14,7 @@ public abstract class Pessoa {
 	
 	private String nome;
 	
-	private int idade;
+	private String faixaEtaria;
 	
 	private String sexo;
 	
@@ -22,16 +22,16 @@ public abstract class Pessoa {
 		
 	}
 	
-	public Pessoa(String id, String nome, int idade, String sexo) {
+	public Pessoa(String id, String nome, String faixaEtaria, String sexo) {
 		this.id = id;
 		this.nome = nome;
-		this.idade = idade;
+		this.faixaEtaria = faixaEtaria;
 		this.sexo = sexo;
 	}
 	
 	public void imprimeBasico() {
 		System.out.println("Nome: " + this.nome);
-		System.out.println("Idade: " + this.idade);
+		System.out.println("Idade: " + this.faixaEtaria);
 		System.out.println("Sexo: " + this.sexo);
 	}
 	
@@ -56,12 +56,12 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 	
-	public int getIdade() {
-		return idade;
+	public String getFaixaEtaria() {
+		return faixaEtaria;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setFaixaEtaria(String faixaEtaria) {
+		this.faixaEtaria = faixaEtaria;
 	}
 
 	public String getSexo() {

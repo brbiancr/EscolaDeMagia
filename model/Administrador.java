@@ -19,8 +19,8 @@ public class Administrador extends Pessoa{
 		super();
 	}
 	
-	public Administrador(String nome, int idade, String sexo, Double salario, String cargo) {
-		super(GerarIDs.gerarIdAdministrador(), nome, idade, sexo);
+	public Administrador(String nome, String faixaEtaria, String sexo, Double salario, String cargo) {
+		super(GerarIDs.gerarIdAdministrador(), nome, faixaEtaria, sexo);
 		this.salario = salario;
 		this.cargo = cargo;
 	}

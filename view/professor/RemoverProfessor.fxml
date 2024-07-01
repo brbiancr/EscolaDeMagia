@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.professor.ProfessorControlador"
+	styleClass="removerProfessor" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="90" prefWidth="90" hgrow="ALWAYS" halignment="left"/>	
+		<ColumnConstraints minWidth="90" />
+		<ColumnConstraints minWidth="90"  halignment="left"/>
+	</columnConstraints>
+	
+	<Label text="Remover Professor"
+		styleClass="removerProfessor-titulo"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+	
+	<Label text="ID Professor"
+		styleClass="removerProfessor-label"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+	
+	<TextField fx:id="campoID"
+		styleClass="removerProfessor-textField"
+		GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+	
+	<Button text="Buscar"
+		GridPane.columnIndex="2" GridPane.rowIndex="1"
+		GridPane.halignment="RIGHT"
+		styleClass="removerProfessor-botao-buscar"
+		onAction="#buscarProfessor">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+		
+	<Button text="Voltar"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER"
+		styleClass="removerProfessor-botao"
+		onAction="#voltarProfessor">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+	
+</GridPane>
+

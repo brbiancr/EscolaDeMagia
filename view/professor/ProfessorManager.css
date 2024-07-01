@@ -1,0 +1,20 @@
+.professorManager {
+	-fx-background-color: linear-gradient(to right, #ad5389, #3c1053);
+}
+
+.professorManager-titulo {
+	-fx-font-size: 32px;
+	-fx-text-fill: #D8BFD8;
+}
+
+.professorManager-botao {
+	-fx-background-color: "#663366";
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}
+
+.professorManager-botao-menuPrincipal{
+	-fx-background-color: black;
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}

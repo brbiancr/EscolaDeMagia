@@ -1,0 +1,30 @@
+.removerAluno{
+	-fx-background-color: linear-gradient(to right, #ad5389, #3c1053);
+}
+
+.removerAluno-titulo {
+	-fx-font-size: 25px;
+	-fx-text-fill: #D8BFD8;
+}
+
+.removerAluno-label {
+	-fx-font-size: 18px;
+	-fx-text-fill: black;
+}
+
+.removerAluno-textField{
+	-fx-background-color: #D8BFD8;
+	-fx-size: 15px;
+}
+
+.removerAluno-botao-buscar {
+	-fx-background-color: black;
+	-fx-font-size: 15px;
+	-fx-text-fill: "#FFFFFF";
+}
+
+.removerAluno-botao {
+	-fx-background-color: black;
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}

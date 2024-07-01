@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.administrador.AdministradorControlador"
+	styleClass="listaDeAdministradores" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="60" prefWidth="90" hgrow="ALWAYS" maxWidth="Infinity" />	
+	</columnConstraints>
+	
+	<Label text="Lista de Administradores"
+		styleClass="listaDeAdministradores-titulo">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+	
+	<HBox 
+		GridPane.columnIndex="0" GridPane.rowIndex="1"
+		GridPane.halignment="CENTER">
+		
+		<Label text="ID - "
+			styleClass="listaDeAdministradores-label"></Label>
+	
+		<Label text="Nome do Administrador"
+			styleClass="listaDeAdministradores-label"></Label>
+	</HBox>
+		
+	<Button text="Voltar"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.halignment="CENTER"
+		styleClass="listaDeAdministradores-botao"
+		onAction="#voltarAdministrador">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+	
+</GridPane>
+

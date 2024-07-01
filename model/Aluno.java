@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -25,8 +24,8 @@ public class Aluno extends Pessoa{
 		super();
 	}
 	
-	public Aluno(String nome, int idade, String sexo, String reino) {
-		super(GerarIDs.gerarMatricula(reino), nome, idade, sexo);
+	public Aluno(String nome, String faixaEtaria, String sexo, String reino) {
+		super(GerarIDs.gerarMatricula(reino), nome, faixaEtaria, sexo);
 		this.reino = reino;
 		this.disciplinasMatriculadas = new ArrayList<Disciplina>();
 	}
@@ -62,14 +61,4 @@ public class Aluno extends Pessoa{
 	public void setDisciplinasMatriculadas(List<Disciplina> disciplinasMatriculadas) {
 		this.disciplinasMatriculadas = disciplinasMatriculadas;
 	}
-	
-	
-
-	//public Map<Disciplina, Double> getNota() {
-	//	return nota;
-	//}
-
-	//public void setNota(Map<Disciplina, Double> nota) {
-	//	this.nota = nota;
-	//}
 }

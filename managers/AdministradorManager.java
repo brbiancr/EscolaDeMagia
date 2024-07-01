@@ -15,51 +15,31 @@ public class AdministradorManager {
 		dao = new DAO<>(Administrador.class);
 	}
 	
-	public void adicionarAdministrador() {
-		System.out.print("Nome: ");
-		String nome = entrada.nextLine();
-		
-		System.out.print("Idade: ");
-		int idade = entrada.nextInt();
-		entrada.nextLine();
-		
-		System.out.print("Sexo: ");
-		String sexo = entrada.nextLine();
-		
-		System.out.print("Salario: ");
-		double salario = entrada.nextDouble();
-		entrada.nextLine();
-		
-		System.out.print("Cargo: ");
-		String cargo = entrada.nextLine();
-		
-		Administrador administrador= new Administrador(nome, idade, sexo, salario, cargo);
+	public void adicionarAdministrador(String nome, String faixaEtaria, String sexo, double salario, String cargo) {
+
+		Administrador administrador= new Administrador(nome, faixaEtaria, sexo, salario, cargo);
 		
 		dao.incluirTransacao(administrador);
-		
-		System.out.println("\nAdministrador adicionado com sucesso!");
+
 		System.out.println("ID do administrador: " + administrador.getId() + "\n");
 	}
 	
-	public void removerAdministrador() {
+	public void removerAdministrador(String idAdministrador) {
 		
-		List<Administrador> administradores = dao.obterTodos();
+		Administrador administrador = buscarAdministrador(idAdministrador);
 		
-		if(administradores.isEmpty()) {
-			System.out.println("Não há administradores cadastrados!");
+		if(administrador == null) {
+			System.out.println("Administrador não encontrado");
 		} else {
-			System.out.print("ID do Administrador: ");
-			String idAdministrador = entrada.nextLine();
+			dao.remover(administrador);
+		}
 			
-			Administrador administrador = dao.encontrar(idAdministrador);
-			
-			if(administrador != null) {
-				dao.remover(administrador);
-				System.out.println("Administrador removido!");
-			} else {
-				System.out.println("Administrador não econtrado!");
-			}
-		}	
+	}
+	
+	public Administrador buscarAdministrador(String idAdministrador) {
+		Administrador administrador = dao.encontrar(idAdministrador);
+		
+		return administrador;
 	}
 	
 	public void listarAdministradores() {
@@ -85,13 +65,7 @@ public class AdministradorManager {
 			int opcao = entrada.nextInt();
 			entrada.nextLine();
 			
-			switch(opcao) {
-				case 1: adicionarAdministrador();
-						break;
-				
-				case 2: removerAdministrador();
-						break;
-						
+			switch(opcao) {				
 				case 3: listarAdministradores();
 						break;
 						

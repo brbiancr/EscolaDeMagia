@@ -19,9 +19,8 @@ public class ProfessorManager {
 		System.out.print("Nome: ");
 		String nome = entrada.nextLine();
 		
-		System.out.print("Idade: ");
-		int idade = entrada.nextInt();
-		entrada.nextLine();
+		System.out.print("Faixa Etaria: ");
+		String faixaEtaria = entrada.nextLine();
 		
 		System.out.print("Sexo: ");
 		String sexo = entrada.nextLine();
@@ -30,7 +29,7 @@ public class ProfessorManager {
 		Double salario = entrada.nextDouble();
 		entrada.nextLine();
 		
-		Professor professor = new Professor(nome, idade, sexo, salario);
+		Professor professor = new Professor(nome, faixaEtaria, sexo, salario);
 		dao.incluirTransacao(professor);
 		
 		System.out.println("\nProfessor adicionado com sucesso!\n");

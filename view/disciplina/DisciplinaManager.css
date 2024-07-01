@@ -1,0 +1,20 @@
+.disciplinaManager {
+	-fx-background-color: linear-gradient(to right, #ad5389, #3c1053);
+}
+
+.disciplinaManager-titulo {
+	-fx-font-size: 32px;
+	-fx-text-fill: #D8BFD8;
+}
+
+.disciplinaManager-botao {
+	-fx-background-color: "#663366";
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}
+
+.disciplinaManager-botao-menuPrincipal{
+	-fx-background-color: black;
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}

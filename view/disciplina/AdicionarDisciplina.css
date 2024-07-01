@@ -1,0 +1,33 @@
+.adicionarDisciplina {
+	-fx-background-color: linear-gradient(to right, #ad5389, #3c1053);
+}
+
+.adicionarDisciplina-titulo {
+	-fx-font-size: 25px;
+	-fx-text-fill: #D8BFD8;
+}
+
+.adicionarDisciplina-label {
+	-fx-font-size: 15px;
+	-fx-text-fill: black;
+}
+
+.adicionarDisciplina-label-cargaHoraria {
+	-fx-font-size: 11px;
+	-fx-text-fill: black;
+}
+
+.adicionarDisciplina-textField{
+	-fx-background-color: #D8BFD8;
+	-fx-size: 20px;
+}
+
+.adicionarDisciplina-choiceBox{
+	-fx-background-color: #D8BFD8;
+}
+
+.adicionarDisciplina-botao {
+	-fx-background-color: black;
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}

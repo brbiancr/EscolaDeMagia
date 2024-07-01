@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="view.aluno.AlunoControlador"
+	styleClass="alunoEncontradoGerenciarAluno" hgap="15" vgap="15">
+	
+	<padding>
+		<Insets left="40" right="40" top="40"/>
+	</padding>
+	
+	<columnConstraints>
+		<ColumnConstraints minWidth="80" prefWidth="80" hgrow="ALWAYS" halignment="left" maxWidth="Infinity"/>	
+	</columnConstraints>
+	
+	<Label text="Gerenciar Aluno"
+		styleClass="alunoEncontradoGerenciarAluno-titulo"
+		GridPane.columnIndex="0" GridPane.rowIndex="0"
+		GridPane.halignment="CENTER">
+		
+		<GridPane.margin>
+			<Insets top="5" bottom="10"/>
+		</GridPane.margin>
+	</Label>
+
+	<Label text="Matricula - Nome do Aluno"
+		GridPane.columnIndex="0" GridPane.rowIndex="1"
+		GridPane.halignment="CENTER"
+		styleClass="alunoEncontradoGerenciarAluno-label"></Label>
+	
+	<Button text="Dados do Aluno"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"
+		GridPane.halignment="CENTER"
+		styleClass="alunoEncontradoGerenciarAluno-vbox"
+		onAction="#dadosDoAluno">
+			
+		<GridPane.margin>
+			<Insets top="5" bottom="2"/>
+		</GridPane.margin>
+	</Button>
+
+	<Button text="Disiplinas Matriculdas"
+		GridPane.columnIndex="0" GridPane.rowIndex="3"
+		GridPane.halignment="CENTER"
+		styleClass="alunoEncontradoGerenciarAluno-vbox"
+		onAction="#disciplinasMatriculadas">
+			
+		<GridPane.margin>
+			<Insets top="5" bottom="2"/>
+		</GridPane.margin>
+	</Button>
+	
+	<Button text="Desmatricular Disciplina"
+		GridPane.columnIndex="0" GridPane.rowIndex="4"
+		GridPane.halignment="CENTER"
+		styleClass="alunoEncontradoGerenciarAluno-vbox"
+		onAction="#desmatricularDisciplina">
+			
+		<GridPane.margin>
+			<Insets top="5" bottom="2"/>
+		</GridPane.margin>
+	</Button>
+		
+		
+	<Button text="Voltar"
+		GridPane.columnIndex="0" GridPane.rowIndex="5" 
+		GridPane.halignment="CENTER"
+		styleClass="alunoEncontradoGerenciarAluno-botao"
+		onAction="#gerenciarAluno">
+			
+		<GridPane.margin>
+			<Insets top="10" bottom="10"/>
+		</GridPane.margin>
+	</Button>
+	
+</GridPane>
+

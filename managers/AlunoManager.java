@@ -24,9 +24,8 @@ public class AlunoManager {
 		System.out.print("Nome: ");
 		String nome = entrada.nextLine();
 		
-		System.out.print("Idade: ");
-		int idade = entrada.nextInt();
-		entrada.nextLine();
+		System.out.print("Faixa Etaria: ");
+		String faixaEtaria = entrada.nextLine();
 		
 		System.out.print("Sexo: ");
 		String sexo = entrada.nextLine();
@@ -38,7 +37,7 @@ public class AlunoManager {
 		int opcao = entrada.nextInt();
 		entrada.nextLine();
 		
-		Aluno aluno = new Aluno(nome, idade, sexo, reinos.get(opcao));
+		Aluno aluno = new Aluno(nome, faixaEtaria, sexo, reinos.get(opcao));
 		dao.incluirTransacao(aluno);
 		
 		System.out.println("\nAluno adicionado com sucesso!\n");

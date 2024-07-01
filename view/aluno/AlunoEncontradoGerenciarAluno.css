@@ -1,0 +1,25 @@
+.alunoEncontradoGerenciarAluno{
+	-fx-background-color: linear-gradient(to right, #ad5389, #3c1053);
+}
+
+.alunoEncontradoGerenciarAluno-titulo {
+	-fx-font-size: 25px;
+	-fx-text-fill: #D8BFD8;
+}
+
+.alunoEncontradoGerenciarAluno-label {
+	-fx-font-size: 18px;
+	-fx-text-fill: "#FFFFFF";
+}
+
+.alunoEncontradoGerenciarAluno-vbox {
+	-fx-background-color: "#663366";
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}
+
+.alunoEncontradoGerenciarAluno-botao {
+	-fx-background-color: black;
+	-fx-font-size: 16px;
+	-fx-text-fill: "#FFFFFF";
+}
