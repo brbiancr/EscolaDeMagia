@@ -17,6 +17,7 @@ A Escola de Magia é um sistema de gerenciamento de uma escola de magia, onde al
 - **UML** para modelagem de classes
 - **Git** para controle de versão
 -  **JPA (Hibernate)**: Java Persistence API para o gerenciamento de persistência e ORM (Object-Relational Mapping).
+-  **Java FX**:  Utilizado para a criação da interface gráfica do usuário (GUI), proporcionando uma experiência de usuário rica e interativa. 
 
 ## Contribuição
 
