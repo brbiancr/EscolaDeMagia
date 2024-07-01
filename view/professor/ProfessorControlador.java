@@ -3,6 +3,7 @@ package view.professor;
 import java.io.IOException;
 import java.net.URL;
 
+import infra.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import managers.ProfessorManager;
+import model.Professor;
 import view.FXMLControlador;
 
 public class ProfessorControlador {
@@ -32,6 +34,8 @@ public class ProfessorControlador {
 	@FXML TextField campoID;
 	
 	private ProfessorManager professorManager = new ProfessorManager();
+	
+	private DAO<Professor> dao = new DAO<>(Professor.class);
 	
 	public void adicionarProfessor(ActionEvent event) throws IOException {
 		String arquivoCSS = getClass().getResource("/view/professor/adicionarProfessor.css").toExternalForm();
@@ -93,20 +97,36 @@ public class ProfessorControlador {
 		System.out.println("Professor adicionado!");
 		
 		professorManager.adicionarProfessor(nome, faixaEtaria, sexo, salario);
+		
 		//TODO Adicionar pop-up Aluno adicionado!
 		
 		voltarProfessor(event);
 	}
 	
 	public void buscarProfessor(ActionEvent event) throws IOException {
-		Boolean encontrouProfessor = true;
+		Professor professor = dao.encontrar(campoID.getText());
 		
-		if(encontrouProfessor) {
-			professorEncontrado(event);
+		if(professor == null) {
+			professorNaoEncontrado(event);
 		} else {
-			System.out.println("Mostrar prof não encontrado");
+			professorEncontrado(event);
 		}
 
+	}
+	
+	public void professorNaoEncontrado(ActionEvent event) throws IOException {
+		String arquivoCSS = getClass().getResource("/view/professor/professorNaoEncontrado.css").toExternalForm();
+		URL arquivoFXML = getClass().getResource("/view/professor/professorNaoEncontrado.fxml");
+		
+		GridPane raiz = FXMLLoader.load(arquivoFXML);
+		
+		Scene professorNaoEncontrado = new Scene(raiz, 350, 400);
+		professorNaoEncontrado.getStylesheets().add(arquivoCSS);
+		
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setTitle("Escola de Magia - Remover Professor");
+	    stage.setScene(professorNaoEncontrado);
+	    stage.show();
 	}
 	
 	public void professorEncontrado(ActionEvent event) throws IOException {		

@@ -24,24 +24,12 @@ public class ProfessorManager {
 		System.out.println("ID do professor: " + professor.getId() + "\n");
 	}
 	
-	public void removerProfessor() {
-		List<Professor> professores = dao.obterTodos();
+	public void removerProfessor(String idProfessor) {
+			
+		Professor professor = dao.encontrar(idProfessor);
 		
-		if(professores.isEmpty()) {
-			System.out.println("Não há professores cadastrados!");
-		} else {
-			System.out.print("ID do professor: ");
-			String idProfessor = entrada.nextLine();
+		dao.remover(professor);
 			
-			Professor professor = dao.encontrar(idProfessor);
-			
-			if(professor != null) {
-				dao.remover(professor);
-				System.out.println("Professor removido!");
-			} else {
-				System.out.println("Professor não econtrado!");
-			}
-		}	
 	}
 	
 	public void listarProfessores() {

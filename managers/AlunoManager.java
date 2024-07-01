@@ -30,19 +30,9 @@ public class AlunoManager {
 	}
 	
 	public void removerAluno(String matriculaAluno) {
-		Aluno aluno = buscarAluno(matriculaAluno);
-		
-		if(aluno == null) {
-			System.out.println("Aluno não encontrado");
-		} else {
-			dao.remover(aluno);
-		}
-	}
-	
-	public Aluno buscarAluno(String matriculaAluno) {
 		Aluno aluno = dao.encontrar(matriculaAluno);
-		
-		return aluno;
+
+		dao.remover(aluno);
 	}
 	
 	public void listarAlunos() {

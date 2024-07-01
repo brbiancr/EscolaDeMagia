@@ -26,7 +26,7 @@ public class AdministradorManager {
 	
 	public void removerAdministrador(String idAdministrador) {
 		
-		Administrador administrador = buscarAdministrador(idAdministrador);
+		Administrador administrador = dao.encontrar(idAdministrador);
 		
 		if(administrador == null) {
 			System.out.println("Administrador não encontrado");
@@ -34,12 +34,6 @@ public class AdministradorManager {
 			dao.remover(administrador);
 		}
 			
-	}
-	
-	public Administrador buscarAdministrador(String idAdministrador) {
-		Administrador administrador = dao.encontrar(idAdministrador);
-		
-		return administrador;
 	}
 	
 	public void listarAdministradores() {

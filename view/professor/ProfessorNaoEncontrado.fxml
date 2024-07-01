@@ -8,7 +8,7 @@
 
 <GridPane xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="view.professor.ProfessorControlador"
-	styleClass="removerProfessor" hgap="15" vgap="15">
+	styleClass="professorNaoEncontrado" hgap="15" vgap="15">
 	
 	<padding>
 		<Insets left="40" right="40" top="40"/>
@@ -21,7 +21,7 @@
 	</columnConstraints>
 	
 	<Label text="Remover Professor"
-		styleClass="removerProfessor-titulo"
+		styleClass="professorNaoEncontrado-titulo"
 		GridPane.columnIndex="0" GridPane.rowIndex="0"
 		GridPane.columnSpan="3"
 		GridPane.halignment="CENTER">
@@ -32,19 +32,19 @@
 	</Label>
 	
 	<Label text="ID Professor"
-		styleClass="removerProfessor-label"
+		styleClass="professorNaoEncontrado-label"
 		GridPane.columnIndex="0" GridPane.rowIndex="1"
 		GridPane.halignment="LEFT"></Label>
 	
 	<TextField fx:id="campoID"
-		styleClass="removerProfessor-textField"
+		styleClass="professorNaoEncontrado-textField"
 		GridPane.columnIndex="1" GridPane.rowIndex="1"
 		GridPane.halignment="LEFT"></TextField>
 	
 	<Button text="Buscar"
 		GridPane.columnIndex="2" GridPane.rowIndex="1"
 		GridPane.halignment="RIGHT"
-		styleClass="removerProfessor-botao-buscar"
+		styleClass="professorNaoEncontrado-botao-buscar"
 		onAction="#buscarProfessor">
 			
 		<GridPane.margin>
@@ -52,11 +52,17 @@
 		</GridPane.margin>
 	</Button>
 		
+	<Label text="PROFESSOR NÃO ENCONTRADO"
+		styleClass="professorNaoEncontrado-label-alerta"
+		GridPane.columnIndex="0" GridPane.rowIndex="2"
+		GridPane.columnSpan="3"
+		GridPane.halignment="CENTER"></Label>	
+		
 	<Button text="Voltar"
 		GridPane.columnIndex="0" GridPane.rowIndex="4"
 		GridPane.columnSpan="3"
 		GridPane.halignment="CENTER"
-		styleClass="removerProfessor-botao"
+		styleClass="professorNaoEncontrado-botao"
 		onAction="#voltarProfessor">
 			
 		<GridPane.margin>

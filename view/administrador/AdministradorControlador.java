@@ -3,6 +3,7 @@ package view.administrador;
 import java.io.IOException;
 import java.net.URL;
 
+import infra.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,8 @@ public class AdministradorControlador {
 	private TextField campoId;
 
 	private AdministradorManager administradorManager = new AdministradorManager();
+	
+	private DAO<Administrador> dao = new DAO<>(Administrador.class);
 	
 	public void adicionarAdministrador(ActionEvent event) throws IOException {
 		String arquivoCSS = getClass().getResource("/view/administrador/adicionarAdministrador.css").toExternalForm();
@@ -113,7 +116,7 @@ public class AdministradorControlador {
 	
 	public void buscarAdministrador(ActionEvent event) throws IOException {
 		
-		Administrador administrador = administradorManager.buscarAdministrador(campoId.getText());
+		Administrador administrador = dao.encontrar(campoId.getText());
 		
 		if(administrador == null) {
 			administradorNaoEncontrado(event);

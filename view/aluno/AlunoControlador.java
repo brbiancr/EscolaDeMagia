@@ -3,6 +3,7 @@ package view.aluno;
 import java.io.IOException;
 import java.net.URL;
 
+import infra.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,8 @@ public class AlunoControlador {
 	private TextField campoMatricula;
 	
 	private AlunoManager alunoManager = new AlunoManager();
+	
+	private DAO<Aluno> dao = new DAO<>(Aluno.class);
 	
 	public void adicionarAluno(ActionEvent event) throws IOException {
 		String arquivoCSS = getClass().getResource("/view/aluno/adicionarAluno.css").toExternalForm();
@@ -126,7 +129,7 @@ public class AlunoControlador {
 	}
 	
 	public void buscarAluno(ActionEvent event) throws IOException {
-		Aluno aluno = alunoManager.buscarAluno(campoMatricula.getText());
+		Aluno aluno = dao.encontrar(campoMatricula.getText());
 		
 		if(aluno == null) {
 			alunoNaoEncontrado(event);
@@ -174,7 +177,7 @@ public class AlunoControlador {
 	}
 	
 	public void buscarAlunoGerenciarAluno(ActionEvent event) throws IOException {
-		Aluno aluno = alunoManager.buscarAluno(campoMatricula.getText());
+		Aluno aluno = dao.encontrar(campoMatricula.getText());
 		
 		if(aluno == null) {
 			alunoNaoEncontradoGerenciarAluno(event);
